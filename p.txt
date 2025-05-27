@@ -1,0 +1,1 @@
+App que registre la información de los hobbies de una persona y en qué porcentaje lo hace.

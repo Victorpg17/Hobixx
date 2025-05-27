@@ -1,0 +1,22 @@
+venv/
+
+# Ignorar archivos temporales de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignorar archivos de logs o errores
+*.log
+
+# Ignorar archivos de bases de datos temporales
+*.sqlite3
+*.db
+
+# Ignorar configuraciones locales de VS Code o PyCharm
+.vscode/
+.idea/
+
+# Archivos de configuración del sistema operativo
+.DS_Store
+Thumbs.db

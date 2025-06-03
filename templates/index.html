@@ -4,29 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hobbixx</title>
+    <!-- FAVICON -->
+     <link rel="shortcut icon" href="../static/img/Logo.png" type="image/x-icon">
     <!-- CSS -->
      <link rel="stylesheet" href="../static/css/style.css">
-     
+    <!-- REMIXICON -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
-        <div class="info">
-            <h1>Hobbixx</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, voluptates quisquam. Sapiente aperiam laboriosam, delectus quasi a soluta voluptates, quis perspiciatis culpa repellat voluptatum quia. Maxime magnam molestias suscipit laborum?</p>
-        </div>
+        <nav class="info">
+            <button id="login">Login</button>
+            <div class="logo">
+                <img src="../static/img/Logo.png" alt="">
+                <h1>Hobbixx</h1>
+            </div>
+            <button id="sign-up">Sign Up</button>
+        </nav>
 
-        <div class="add_hobbie">
-            <form action="/hobbies" method="post">
-                <input type="text" name="hobbie" id="" placeholder="Hobbie" required>
-                <input type="text" name="info" id="" placeholder="Description (Optional)">
-                <input type="number" name="percentage" id="" 
-                placeholder="Percentage"
-                required>
-                <input type="submit" value="ADD">
-            </form>
-        </div>
-    </div>
+        <div class="container-forms">
+            <div class="toggle-box">
+                <div class="toggle-panel left"></div>
+                <div class="toggle-panel right"></div>
+            </div>
 
+            <div class="form-box sign-up">
+                <div class="content">
+                    <form action="/register" method="post">
+                        <h2>SIGN UP</h2>
+                        <div class="input">
+                            <i class="ri-user-line"></i>
+                            <input type="text" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="input">
+                            <i class="ri-mail-line"></i>
+                            <input type="text" name="email" placeholder="user1234@email.com" required>
+                        </div>
+                        <div class="input">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" name="password" id="" placeholder="Password" required>
+                            <i class="ri-eye-line"></i>
+                        </div>
+                        <div class="input">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" name="password" id="" placeholder="Confirm Password" required>
+                            <i class="ri-eye-line"></i>
+                        </div>
+                        <hr>
+                        <input type="submit" value="Sign In" id="submit">
+                    </form>
+                </div>
+            </div>
+
+            <div class="form-box login">
+                <div class="content">
+                    <form action="/login" method="post">
+                        <h2>Hi, Welcome!</h2>
+                        <div class="input">
+                            <i class="ri-mail-line"></i>
+                            <input type="text" name="email" placeholder="user1234@email.com" required>
+                        </div>
+                        <div class="input">
+                            <i class="ri-lock-line"></i>
+                            <input type="password" name="password" id="" placeholder="Password" required>
+                            <i class="ri-eye-line"></i>
+                        </div>
+                        <div class="items">
+                            <div class="check">
+                                <input type="checkbox" name="" id="remember">
+                                <label for="remember">Remember</label>
+                            </div>
+                            <a href="#">Forgot password?</a>
+                        </div>
+                        <hr>
+                        <input type="submit" value="Sign In" id="submit">
+                    </form>
+                </div>
+            </div>
+
+        </div>
     <script src="../static/js/script.js"></script>
 </body>
 </html>

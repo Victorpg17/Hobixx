@@ -1,16 +1,18 @@
 from model import dbConnection
 
 class Hobbie():
-    def __init__(self, hobbie, info, percentage):
+    def __init__(self, user_id, hobbie, info, percentage):
+        self.user_id = user_id
         self.hobbie = hobbie
         self.info = info
         self.percentage = percentage
 
     def toDBCollection(self):
         return {
-            'hobbie:': self.hobbie,
+            'user_id': self.user_id,
+            'hobbie': self.hobbie,
             'information': self.info,
-            'percentage:': self.percentage
+            'percentage': self.percentage
         }
     
 # CREATE
@@ -22,3 +24,4 @@ def insertHobbie(hobbie):
 def getAllHobbies():
     db = dbConnection()
     return list(db['hobbie'].find())
+

@@ -3,9 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <!-- FAVICON -->
+     <link rel="shortcut icon" href="../static/img/Logo.png" type="image/x-icon">
+    <!-- CSS -->
+     <link rel="stylesheet" href="../static/css/home-style.css">
+    <!-- REMIXICON -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css" integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- FONT AWESOME -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
+    <div class="background-shapes">
+        <div class="shapes-top">
+            <div class="triangle"></div>
+            <div class="square"></div>
+        </div>
+
+        <div class="shapes-bottom">
+            <div class="circle left"></div>
+            <div class="circle right"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="info">
+            <div class="logo">
+                <img src="../static/img/Logo.png" alt="">
+                <h1>Hobbixx</h1>
+            </div>
+            
+            <div class="right-menu">
+                <div class="user">
+                    <p> Hi, <b>{{ username }}</b>!</p>
+                     <!-- <p>Hi, <b>Víctor</b>!</p> -->
+                    <div class="icon">
+                        <span id="firstLetter"> {{ username[0] }} </span>
+                         <!-- <span id="firstLetter">Víctor</span> -->
+                    </div>
+                </div>
+
+                <div class="dropdown-menu">
+                    <a href="/signOut" class="option">
+                        <p>Sign Out</p>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+        
+        <div class="content">
+            <h2>Add your hobbies here!</h2>
+
+            <div class="add-hobbie">
+                <a href="" id="add"><i class="ri-add-line"></i>Add Note</a>
+                <form action="/hobbies" method="post" class="box_hobbie">
+                    <input type="text" name="name" id="text" placeholder="Hobbie" required>
+                    <input type="text" name="info" id="description" placeholder="Description" required>
+                    <input type="number" name="" id="">
+                    <input type="submit" value="ADD HOBBIE">
+                </form>
+            </div>
+
+            <div class="hobbies">
+                {% if hobbies %}
+                    {% for hobbie in hobbies %}
+                        <div class="hobbie">
+                            <div class="header-hobbie">
+                                <h2>{{ hobbie.name }}</h2>
+                            </div>
+                            <div class="info-hobbie">
+                                <p>{{ hobbie.info }}</p>
+                            </div>
+                            <div class="percentage-hobbie">
+                                <p>{{ hobbie.percentage }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>There are no saved hobbie</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/home-script.js"></script>
 </body>
 </html>

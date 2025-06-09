@@ -17,13 +17,11 @@ def index():
             name = request.form['name']
             email = request.form['email']
             password = request.form['password']
-            confirm = request.form['confirm_password']
-
-            if password != confirm:
-                return render_template('index.html', mensaje="Las contraseñas no coinciden")
 
             hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
-            resultado = insertUser(name, email, hashed_pw)
+
+            user = User(name, email, hashed_pw)
+            resultado = insertUser(user)
 
             if resultado == 'existe':
                 return render_template('index.html', mensaje="Este correo ya está registrado")
@@ -34,14 +32,14 @@ def index():
             email = request.form['email']
             password_in = request.form['password']
             
-            usuario = getUser(email)
+            user = getUser(email)
 
-            if not usuario:
+            if not user:
                 return render_template('index.html', mensaje="Usuario no registrado")
 
-            if bcrypt.check_password_hash(usuario['password'], password_in):
-                session['user_id'] = str(usuario['_id'])
-                session['username'] = usuario['name']
+            if bcrypt.check_password_hash(user['password'], password_in):
+                session['user_id'] = str(user['_id'])
+                session['username'] = user['name']
                 return redirect(url_for('home'))
             else:
                 return render_template('index.html', mensaje="Contraseña incorrecta")
@@ -54,15 +52,21 @@ def home():
         return redirect(url_for('index'))
 
     hobbies = getAllHobbies(session['user_id'])
+    print(session)
+    print(hobbies)
     return render_template('home.html', hobbies=hobbies, username=session['username'])
 
 @app.route('/hobbies')
 def add_hobbie():
-    hobbie = request.form['hobbie']
+    name = request.form['hobbie']
     info = request.form['info']
     percentage = request.form['percentage']
     
+    if name and info and percentage:
+        hobbie = Hobbie(name, info, percentage)
+        hobbie.user_id = session['user_id']
 
+        insertHobbie(hobbie)
 
 if __name__ == '__main__':
     app.run(debug=True)

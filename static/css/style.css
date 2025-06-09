@@ -42,7 +42,6 @@ body{
     align-items: center;
     gap: 1rem;
     position: absolute;
-    /* transform: translateX(calc(100vw - 19em)); */
     transition: .3s 1s;
 }
 
@@ -88,10 +87,6 @@ body{
     transition: transform 0.25s ease-out;
 }
 
-/* .container nav button:hover{
-    color: ;
-} */
-
 .container nav button:hover::after{
     transform: scaleX(1);
 }
@@ -99,8 +94,8 @@ body{
 .container .container-forms{
     display: flex;
     position: relative;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 .container .container-forms .toggle-box{
@@ -154,6 +149,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     width: 50%;
     height: 100%;
 }
@@ -164,7 +160,6 @@ body{
     align-items: center;
     position: relative;
     width: 60%;
-    height: 28rem;
     border-radius: 20px;
 }
 
@@ -172,7 +167,8 @@ body{
 .container .container-forms .form-box .content::after{
     content: '';
     position: absolute;
-    inset: 0;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
     background: linear-gradient(45deg,
     #03a9f4 10%,
     transparent 30%,
@@ -191,12 +187,13 @@ body{
     flex-direction: column;
     gap: 1.3rem;
     padding: 1.5rem;
-    position: absolute;
-    inset: 4px;
+    position: relative;
+    width: 100%;
     background: rgba(0, 0, 0, .7);
     backdrop-filter: blur(80px);
     -webkit-backdrop-filter: blur(80px);
     border-radius: 20px;
+    transition: .5s;
     z-index: 1;
 }
 
@@ -227,18 +224,30 @@ body{
     border-radius: 10px;
 }
 
-
-.container .container-forms .form-box .content form .input input[type="password"] + i{
+.container .container-forms .form-box .content form .input .toggleBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    top: 40%;
-    left: calc(100% - 1.7em);
+    top: 50%;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;    
+    background: rgba(0, 0, 0, .2);
+    border-radius: 50%;
     transform: translateY(-50%);
-    font-size: 1.5em;
     cursor: pointer;
+}
+
+.container .container-forms .form-box .content form .input .toggleBtn::before{
+    content: '\f06e';
+    font-family: fontAwesome;
+    font-size: 1.2em;
 }
 
 .container .container-forms .form-box .content form .input input::placeholder{
     color: #A4A4A4;
+    user-select: none;
 }
 
 .container .container-forms .form-box .content form .items{
@@ -261,6 +270,33 @@ body{
     color: #A4A4A4;
 }
 
+.container .container-forms .form-box .content form .pswrd-match{
+    display: none;
+}
+
+.container .container-forms .form-box .content form .pswrd-match span{
+    position: absolute;
+    font-size: .9em;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.container .container-forms .form-box .content form .pswrd-match span i{
+    font-weight: 900;
+}
+
+.container .container-forms .form-box .content form .pswrd-match span:first-of-type,
+.container .container-forms .form-box .content form .pswrd-match span:first-of-type i{
+    color: #ff0000;
+    opacity: 0;
+}
+
+.container .container-forms .form-box .content form .pswrd-match span:last-of-type,
+.container .container-forms .form-box .content form .pswrd-match span:last-of-type i{
+    color: #008000;
+    opacity: 0;
+}
+
 .container .container-forms .form-box .content form hr{
     height: 10px;
     background-color: transparent;
@@ -269,7 +305,7 @@ body{
     border-radius: 10px;
 }
 
-.container .container-forms .form-box .content form #submit{
+.container .container-forms .form-box .content form .submit{
     background: linear-gradient(to right, #501794, #3e70a1);
     padding: 1rem;
     font-size: 1.3em;
@@ -277,10 +313,6 @@ body{
     border: none;
     outline: none;
     cursor: pointer;
-}
-
-.container .container-forms .form-box.sign-up .content{
-    height: 35rem;
 }
 
 /* CLASS ACTIVE ACTIVED */
@@ -310,4 +342,25 @@ body{
 .container.active .container-forms .toggle-box .toggle-panel.right{
     right: 0;
     transition-delay: 1.2s;
+}
+
+/* CLASS HIDE ACTIVED */
+.container .container-forms .form-box .content form .input .toggleBtn.hide::before{
+    content: '\f070';
+}
+
+/* CLASS SUCCESS/ERROR ACTIVED */
+.container .container-forms .form-box .content form.error .pswrd-match,
+.container .container-forms .form-box .content form.success .pswrd-match{
+    display: block;
+}
+
+.container .container-forms .form-box .content form.error .pswrd-match span:first-of-type,
+.container .container-forms .form-box .content form.error .pswrd-match span:first-of-type i{
+    opacity: 1;
+}
+
+.container .container-forms .form-box .content form.success .pswrd-match span:last-of-type,
+.container .container-forms .form-box .content form.success .pswrd-match span:last-of-type i{
+    opacity: 1;
 }

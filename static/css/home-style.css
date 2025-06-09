@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    color: #fff;
+}
+
+body{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #160430;
+}
+
+.background-shapes{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background-shapes .shapes-top,
+.background-shapes .shapes-bottom{
+    position: relative;
+    height: 50%;
+}
+
+.background-shapes .shapes-top .square{
+    position: relative;
+    top: -80%;
+    left: 37%;
+    width: 438px;
+    height: 593px;
+    background: linear-gradient(to left,
+    #4798ee70 5%,
+    #ff29c28d 50%);
+    filter: blur(170px);
+    transform: rotate(-45deg);
+}
+
+.background-shapes .shapes-bottom .circle{
+    display: inline-block;
+    position: absolute;
+    width: 571px;
+    height: 571px;
+    border-radius: 50%;
+    filter: blur(170px);
+}
+
+.background-shapes .shapes-bottom .circle.left{
+    background: linear-gradient(45deg,
+    #ffd50078,
+    #ff004c94);
+    left: -10%;
+    bottom: -50%;
+}
+
+.background-shapes .shapes-bottom .circle.right{
+    background: linear-gradient(45deg,
+    #ff00aaa2,
+    #2723fe95,
+    #23a6fe90);
+    right: -10%;
+    bottom: -50%;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+.container .info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 3rem;
+    /* border: 1px solid; */
+}
+
+.container .info .logo{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: .3s 1s;
+}
+
+.container .info .logo img{
+    width: 60px;
+    cursor: pointer;
+}
+
+.container .info .logo h1{
+    font-family: 'Kaushan Script';
+    font-size: 2.5em;
+    cursor: pointer;
+}
+
+.container .info .right-menu{
+    position: relative;
+    user-select: none;
+}
+
+.container .info .right-menu .user{
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+}
+
+.container .info .right-menu .user .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.container .info .right-menu .user .icon span{
+    font-weight: 500;
+}
+
+.container .info .right-menu .dropdown-menu{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    margin-top: .5rem;
+    background-color: #453659;
+    color: #160430;
+    border-radius: 7px;
+    opacity: 0;
+    transition: .1s ease-in-out;
+    z-index: -1;
+    overflow: hidden;
+    /* border: 1px solid red; */
+}
+
+.container .info .right-menu .dropdown-menu a{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.container .info .right-menu .dropdown-menu a:hover{
+    background-color: #6e5c86;
+}
+
+.container .content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 3rem;
+    border: 1px solid;
+}
+
+/* CLASS DISPLAYED ACTIVE */
+.container .info .right-menu .dropdown-menu.displayed{
+    top: 100%;
+    opacity: 1;
+    z-index: 1;
+}

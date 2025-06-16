@@ -76,7 +76,6 @@ body{
     justify-content: space-between;
     align-items: center;
     padding: 1.4rem 3rem;
-    /* border: 1px solid; */
 }
 
 .container .info .logo{
@@ -135,11 +134,10 @@ body{
     transition: .1s ease-in-out;
     z-index: -1;
     overflow: hidden;
-    /* border: 1px solid red; */
 }
 
 .container .info .right-menu .dropdown-menu a{
-    display: flex;
+    display: none;
     align-items: center;
     gap: .5rem;
     padding: .5rem;
@@ -154,9 +152,92 @@ body{
 .container .content{
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
     padding: 3rem;
-    border: 1px solid;
+}
+
+.container .content h2{
+    font-size: 3em;
+}
+
+.container .content .add-hobbie{
+    width: 100%;
+}
+
+.container .content .add-hobbie form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.container .content .add-hobbie form input{
+    background-color: #453659;
+    padding: .4rem .7rem;
+    border: none;
+    outline: none;
+}
+
+.container .content .add-hobbie form input::placeholder{
+    user-select: none;
+}
+
+.container .content .add-hobbie form input[name="info"]{
+    width: 20%;
+}
+
+.container .content .add-hobbie form .input-number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 7%;
+}
+
+.container .content .add-hobbie form .input-number i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    font-size: 1.3em;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .3s;
+    z-index: 2;
+}
+
+.container .content .add-hobbie form .input-number i.increment{
+    right: .2rem;
+}
+
+.container .content .add-hobbie form .input-number i.decrement{
+    left: .2rem;
+}
+
+.container .content .add-hobbie form .input-number i:hover{
+    background-color: #6e5c86;
+}
+
+.container .content .add-hobbie form .input-number i:active{
+    background-color: #524365;
+}
+
+.container .content .add-hobbie form .input-number input{
+    width: 100%;
+    padding: .4rem 2rem;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.container .content .add-hobbie form input[type="number"]::-webkit-inner-spin-button,
+.container .content .add-hobbie form input[type="number"]::-webkit-outer-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* CLASS DISPLAYED ACTIVE */
@@ -164,4 +245,23 @@ body{
     top: 100%;
     opacity: 1;
     z-index: 1;
+}
+
+.container .info .right-menu .dropdown-menu.displayed a{
+    display: flex;
+}
+
+/* ANIMATIONS */
+/* Vibrate animation  */
+.vibrate {
+  animation: vibrate 0.3s ease;
+}
+
+@keyframes vibrate {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-3px); }
+  40% { transform: translateX(3px); }
+  60% { transform: translateX(-2px); }
+  80% { transform: translateX(2px); }
+  100% { transform: translateX(0); }
 }

@@ -8,11 +8,13 @@ app = Flask(__name__)
 app.secret_key = '12345'
 bcrypt = Bcrypt(app)
 
+# LOGIN/REGISTER FORMS PAGE
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         action = request.form['action']
 
+        # REGISTER FORM 
         if action == 'register':
             name = request.form['name']
             email = request.form['email']
@@ -20,14 +22,17 @@ def index():
 
             hashed_pw = bcrypt.generate_password_hash(password).decode('utf-8')
 
+            # ADD USER IN THE DATABASE
             user = User(name, email, hashed_pw)
-            resultado = insertUser(user)
+            newUser = insertUser(user)
 
-            if resultado == 'existe':
+            # CHECK IF IT EXISTS
+            if newUser == 'exists':
                 return render_template('index.html', mensaje="Este correo ya está registrado")
             else:
                 return render_template('index.html', mensaje="Registro exitoso. Ahora inicia sesión.")
 
+        # LOGIN FORM
         elif action == 'login':
             email = request.form['email']
             password_in = request.form['password']
@@ -57,7 +62,7 @@ def home():
     return render_template('home.html', hobbies=hobbies, username=session['username'])
 
 @app.route('/hobbies')
-def add_hobbie():
+def addHobbie():
     name = request.form['hobbie']
     info = request.form['info']
     percentage = request.form['percentage']
@@ -67,6 +72,11 @@ def add_hobbie():
         hobbie.user_id = session['user_id']
 
         insertHobbie(hobbie)
+
+@app.route('/signOut')
+def signOut():
+    session.clear()
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

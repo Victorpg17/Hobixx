@@ -35,16 +35,16 @@
             
             <div class="right-menu">
                 <div class="user">
-                    <p> Hi, <b>{{ username }}</b>!</p>
-                     <!-- <p>Hi, <b>Víctor</b>!</p> -->
+                    <!-- <p> Hi, <b>{{ username }}</b>!</p> -->
+                     <p>Hi, <b>Víctor</b>!</p>
                     <div class="icon">
-                        <span id="firstLetter"> {{ username[0] }} </span>
-                         <!-- <span id="firstLetter">Víctor</span> -->
+                        <!-- <span id="firstLetter"> {{ username[0] }} </span> -->
+                         <span id="firstLetter">V</span>
                     </div>
                 </div>
 
                 <div class="dropdown-menu">
-                    <a href="/signOut" class="option">
+                    <a href="{{ url_for('signOut') }}" class="option">
                         <p>Sign Out</p>
                         <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     </a>
@@ -56,16 +56,24 @@
             <h2>Add your hobbies here!</h2>
 
             <div class="add-hobbie">
-                <a href="" id="add"><i class="ri-add-line"></i>Add Note</a>
-                <form action="/hobbies" method="post" class="box_hobbie">
-                    <input type="text" name="name" id="text" placeholder="Hobbie" required>
+                <form action="/hobbies" method="post" class="box-hobbie">
+                    <input type="text" name="hobbie" id="text" placeholder="Hobbie" required>
                     <input type="text" name="info" id="description" placeholder="Description" required>
-                    <input type="number" name="" id="">
+                    <div class="input-number">
+                        <i class="ri-subtract-line decrement"></i>
+                        <input type="number" name="hours" id="" placeholder="Hours" max="12" min="0" required>
+                        <i class="ri-add-line increment"></i>
+                    </div>
+                    <div class="input-number">
+                        <i class="ri-subtract-line decrement"></i>
+                        <input type="number" name="minutes" id="" placeholder="Minutes" max="59" min="0">
+                        <i class="ri-add-line increment"></i>
+                    </div>
                     <input type="submit" value="ADD HOBBIE">
                 </form>
             </div>
 
-            <div class="hobbies">
+            <!-- <div class="hobbies">
                 {% if hobbies %}
                     {% for hobbie in hobbies %}
                         <div class="hobbie">
@@ -83,7 +91,7 @@
                 {% else %}
                     <p>There are no saved hobbie</p>
                 {% endif %}
-            </div>
+            </div> -->
         </div>
     </div>
 

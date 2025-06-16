@@ -1,16 +1,16 @@
 from model import dbConnection
 
 class Hobbie():
-    def __init__(self, user_id, name, info, percentage):
+    def __init__(self, user_id, hobbie, info, percentage):
         self.user_id = user_id
-        self.name = name
+        self.hobbie = hobbie
         self.info = info
         self.percentage = percentage
 
     def toDBCollection(self):
         return {
             'user_id': self.user_id,
-            'name': self.name,
+            'hobbie': self.hobbie,
             'information': self.info,
             'percentage': self.percentage
         }

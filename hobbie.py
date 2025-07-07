@@ -1,18 +1,20 @@
 from model import dbConnection
 
 class Hobbie():
-    def __init__(self, user_id, hobbie, info, percentage):
+    def __init__(self, user_id, hobbie, info, hours, minutes):
         self.user_id = user_id
         self.hobbie = hobbie
         self.info = info
-        self.percentage = percentage
+        self.hours = hours
+        self.minutes = minutes
 
     def toDBCollection(self):
         return {
             'user_id': self.user_id,
             'hobbie': self.hobbie,
             'information': self.info,
-            'percentage': self.percentage
+            'hours': self.hours,
+            'minutes': self.minutes
         }
     
 # CREATE

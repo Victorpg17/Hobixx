@@ -57,21 +57,36 @@ def home():
         return redirect(url_for('index'))
 
     hobbies = getAllHobbies(session['user_id'])
-    print(session)
-    print(hobbies)
+
+    for hobbie in hobbies:
+        hours = int(hobbie.get('hours', 0))
+        minutes = int(hobbie.get('minutes', 0))
+        totalMinutes = hours * 60 + minutes
+        percentage = round((totalMinutes / 1440) * 100, 2)
+        hobbie['percentage'] = percentage
+
     return render_template('home.html', hobbies=hobbies, username=session['username'])
 
-@app.route('/hobbies')
+@app.route('/hobbies', methods=['POST'])
 def addHobbie():
     name = request.form['hobbie']
     info = request.form['info']
-    percentage = request.form['percentage']
+    hours = request.form['hours']
+    minutes = request.form['minutes']
+
+    if hours == '':
+        hours = '0'
+
+    if minutes == '':
+        minutes = '0'
     
-    if name and info and percentage:
-        hobbie = Hobbie(name, info, percentage)
-        hobbie.user_id = session['user_id']
+    if name and info and hours and minutes:
+        user_id = session['user_id']
+        hobbie = Hobbie(user_id, name, info, hours, minutes)
 
         insertHobbie(hobbie)
+
+    return redirect(url_for('home'))
 
 @app.route('/signOut')
 def signOut():

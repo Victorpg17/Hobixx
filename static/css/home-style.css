@@ -12,6 +12,7 @@ body{
     width: 100vw;
     min-height: 100vh;
     background-color: #160430;
+    overflow: hidden scroll;
 }
 
 .background-shapes{
@@ -240,6 +241,246 @@ body{
     margin: 0;
 }
 
+.container .content .hobbies{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.container .content .hobbies .hobbie{
+    display: flex;
+    align-items: end;
+    position: relative;
+    width: 24rem;
+    height: 32rem;
+    background: url(../img/Img.webp) center/cover no-repeat;
+    border-radius: 2rem;
+    overflow: hidden;
+    transition: .2s ease-in;
+}
+
+.container .content .hobbies .hobbie.visible:hover{
+    transform: scale(1.05);
+}
+
+.container .content .hobbies .hobbie.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.container .content .hobbies .hobbie.visible {
+    transform: translateY(0);
+    animation: appear linear;
+    animation-timeline: view();
+    animation-range: entry 0% cover 40%;
+}
+
+@keyframes appear {
+    from{
+        opacity: 0;
+        scale: .5;
+    }
+    to{
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.container .content .hobbies .hobbie .content-hobbie{
+    position: relative;
+    width: 100%;
+    height: 60%;
+    padding: 2rem 1.5rem;
+    background: rgba(90, 33, 158, 0.417);
+    border-radius: 5rem 0 2rem 2rem;
+    backdrop-filter: blur(15px);
+}
+
+.container .content .hobbies .hobbie .content-hobbie::before{
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: 0;
+    width: 15%;
+    height: 60px;
+    background: rgba(90, 33, 158, 0.417);
+    border-top-left-radius: 5rem;
+}
+
+.container .content .hobbies .hobbie .content-hobbie::after{
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: 0;
+    width: 15%;
+    height: 60px;
+    background-color: #1D101A;
+    border-top-left-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+}
+
+.container .content .hobbies .hobbie .content-hobbie h3{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.container .content .hobbies .hobbie .content-hobbie p{
+    font-size: .9em;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+    position: absolute;
+    top: 2rem;
+    right: 1.5rem;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu i{
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .3rem;
+    padding: .5rem .15rem;
+    /* position: absolute; */
+    right: -.5rem;
+    background-color: #6e5c86;
+    border-radius: 10rem;
+    scale: 1;
+    transition: .2s ease-in;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu .menu.hidden{
+    /* display: none; */
+    scale: 0;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu .menu a{
+    padding: 5px 6px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: .2s ease-out;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu .menu a:hover{
+    background-color: #524365;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu .menu a.delete:hover{
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+.container .content .hobbies .hobbie .content-hobbie .more-menu .menu a.delete:hover i{
+    color: rgb(218, 2, 2);
+    transition: .2;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
+    margin-top: 1rem;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .progress-circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #160430 calc(var(--percentage) / 2),
+        #4798ee var(--percentage),
+        rgba(255, 255, 255, 0.55) var(--percentage)
+    );
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .percentage-text{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    font-size: 1.2rem;
+    color: #fff;
+    width: 90px;
+    height: 90px;
+    background-color: #2E195C;
+    border-radius: 50%;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: end;
+    width: 100%;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie .hours,
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie .minutes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie .number{
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie .line{
+    position: relative;
+    height: 2.5rem;
+    border: 1px dashed #453659;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie .line::before{
+    content: '';
+    position: absolute;
+    top: -.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: .7rem;
+    height: .7rem;
+    background-color: #735b94;
+    border-radius: 50%;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie .line::after{
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10px;
+    border: 1px dashed #453659;
+}
+
+.container .content .hobbies .hobbie .content-hobbie .percentage-hobbie .time-hobbie .text{
+    color: rgba(255, 255, 255, 0.55);
+}
+
 /* CLASS DISPLAYED ACTIVE */
 .container .info .right-menu .dropdown-menu.displayed{
     top: 100%;
@@ -252,7 +493,7 @@ body{
 }
 
 /* ANIMATIONS */
-/* Vibrate animation  */
+/* Vibrate animation */
 .vibrate {
   animation: vibrate 0.3s ease;
 }

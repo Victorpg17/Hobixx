@@ -91,3 +91,30 @@ document.querySelectorAll('.input-number').forEach(container => {
         if (numericVal < min) input.value = min;
     });
 });
+
+// PROGRESS CIRCLE FILL
+document.querySelectorAll('.progress-circle').forEach(circle => {
+    const percent = circle.getAttribute('data-percentage');
+    circle.style.setProperty('--percentage', percent + '%');
+    circle.querySelector('.percentage-text').textContent = percent + '%';
+});
+
+// MENU EDIT/DELETE
+document.addEventListener('DOMContentLoaded', ()=>{
+  const toggleButtons = document.querySelectorAll('.ri-more-line');
+
+  toggleButtons.forEach(button => {
+    const hobbieContainer = button.closest('.hobbie');
+    const menu = hobbieContainer.querySelector('.menu');
+
+    button.addEventListener('click', ()=>{  
+      menu.classList.toggle('hidden');
+    });
+    
+     document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && e.target !== button) {
+        menu.classList.add('hidden');
+      }
+    });
+  });
+});

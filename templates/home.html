@@ -35,11 +35,11 @@
             
             <div class="right-menu">
                 <div class="user">
-                    <!-- <p> Hi, <b>{{ username }}</b>!</p> -->
-                     <p>Hi, <b>Víctor</b>!</p>
+                    <p> Hi, <b>{{ username }}</b>!</p>
+                     <!-- <p>Hi, <b>Víctor</b>!</p> -->
                     <div class="icon">
-                        <!-- <span id="firstLetter"> {{ username[0] }} </span> -->
-                         <span id="firstLetter">V</span>
+                        <span id="firstLetter"> {{ username[0] }} </span>
+                         <!-- <span id="firstLetter">V</span> -->
                     </div>
                 </div>
 
@@ -56,12 +56,12 @@
             <h2>Add your hobbies here!</h2>
 
             <div class="add-hobbie">
-                <form action="/hobbies" method="post" class="box-hobbie">
+                <form action="{{ url_for('addHobbie') }}" method="post" class="box-hobbie">
                     <input type="text" name="hobbie" id="text" placeholder="Hobbie" required>
                     <input type="text" name="info" id="description" placeholder="Description" required>
                     <div class="input-number">
                         <i class="ri-subtract-line decrement"></i>
-                        <input type="number" name="hours" id="" placeholder="Hours" max="12" min="0" required>
+                        <input type="number" name="hours" id="" placeholder="Hours" max="12" min="0">
                         <i class="ri-add-line increment"></i>
                     </div>
                     <div class="input-number">
@@ -73,28 +73,100 @@
                 </form>
             </div>
 
-            <!-- <div class="hobbies">
+            <div class="hobbies">
                 {% if hobbies %}
                     {% for hobbie in hobbies %}
-                        <div class="hobbie">
-                            <div class="header-hobbie">
-                                <h2>{{ hobbie.name }}</h2>
+                        <div class="hobbie hidden">
+                            <div class="content-hobbie">
+                                <h3>{{ hobbie.hobbie }}</h3>
+                                <p> {{ hobbie.information }} </p>
+
+                                <div class="more-menu">
+                                    <i class="ri-more-line"></i>
+                                    <div class="menu hidden">
+                                        <a href="" class="edit">
+                                            <i class="ri-edit-line"></i>
+                                            <!-- Edit -->
+                                        </a>
+                                        <a href="" class="delete">
+                                            <i class="ri-delete-bin-7-line"></i>
+                                            <!-- Delete -->
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="percentage-hobbie">
+                                    <div class="progress-circle" data-percentage="{{ hobbie.percentage }}">
+                                        <span class="percentage-text" title="Percentage calculated on a 24-hour basis">{{ hobbie.percentage }} %</span>
+                                    </div>
+
+                                    <div class="time-hobbie">
+                                        <div class="hours">
+                                            <span class="number">{{ hobbie.hours }}</span>
+                                            <span class="text">HOURS</span>
+                                        </div>
+
+                                        <div class="line"></div>
+
+                                        <div class="minutes">
+                                            <span class="number">{{ hobbie.minutes }}</span>
+                                            <span class="text">MINUTES</span>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="info-hobbie">
-                                <p>{{ hobbie.info }}</p>
+
+                            <!-- <div class="content-hobbie">
+                                <h3>Dormir</h3>
+                                <p>Me gusta mucho</p>
+
+                                <div class="more-menu">
+                                    <i class="ri-more-line"></i>
+                                    <div class="menu hidden">
+                                        <a href="">
+                                            <i class="ri-edit-line"></i>
+                                            Edit
+                                        </a>
+                                        <a href="">
+                                            <i class="ri-delete-bin-7-line"></i>
+                                            Delete
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="percentage-hobbie">
+                                    <div class="progress-circle" data-percentage="75">
+                                        <span class="percentage-text">--</span>
+                                    </div>
+
+                                    <div class="time-hobbie">
+                                        <div class="hours">
+                                            <span class="number">2</span>
+                                            <span class="text">HOURS</span>
+                                        </div>
+
+                                        <div class="line"></div>
+
+                                        <div class="minutes">
+                                            <span class="number">10</span>
+                                            <span class="text">MINUTES</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="percentage-hobbie">
-                                <p>{{ hobbie.percentage }}</p>
-                            </div>
-                        </div>
+                        </div> -->
+                        </div> 
                     {% endfor %}
                 {% else %}
                     <p>There are no saved hobbie</p>
                 {% endif %}
-            </div> -->
+            </div>
         </div>
     </div>
 
     <script src="../static/js/home-script.js"></script>
+    <script src="../static/js/performance.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js" referrerpolicy="no-referrer"></script>
 </body>
 </html>
